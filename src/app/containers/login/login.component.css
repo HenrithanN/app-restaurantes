@@ -5,3 +5,28 @@
   width: 100%;
   height: 100vh;
 }
+
+.fullWidthForm{
+  width: 100%;
+}
+
+.iconeRestaurante{
+  width: 200px;
+  height: 200px;
+  margin-left: 15rem;
+}
+
+.colorPink{
+  color: #ff4081;
+  text-decoration: none;
+}
+
+.colorPink:hover{
+  color: #141314;
+}
+
+
+
+.pointer{
+  cursor: pointer;
+}

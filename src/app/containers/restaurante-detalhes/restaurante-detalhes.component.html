@@ -1,0 +1,72 @@
+<div class="container" *ngIf="restauranteSelecionado">
+  <div class="row sectionItem">
+    <h1>Detalhes do Restaurante</h1>
+    <div class="col-6">
+      <img class="imgRestaurante" [src]="restauranteSelecionado.IMAGEM ?? '../../../assets/imgs/pizzaBg.jpg'" alt="Imagem do Restaurante {{ restauranteSelecionado.NOME }}">
+    </div>
+    <div class="col-6">
+      <form class="row mt-5 justify-content-center" [formGroup]="formAlterarRestaurante">
+        <div class="col-8">
+          <mat-form-field class="fullWidthForm">
+            <mat-label>Nome do Restaurante</mat-label>
+            <input matInput placeholder="Nome do Restaurante" type="text" formControlName="nome">
+          </mat-form-field>
+        </div>
+        <div class="col-8">
+          <mat-form-field class="example-full-width fullWidthForm">
+            <mat-label>Descrição do Restaurante</mat-label>
+            <input matInput placeholder="Descrição do Restaurante" type="text" formControlName="descricao">
+          </mat-form-field>
+        </div>
+        <div class="col-8">
+          <mat-form-field class="example-full-width fullWidthForm">
+            <mat-label>Nota do Restaurante</mat-label>
+            <input matInput placeholder="Nota do Restaurante" type="text" formControlName="nota">
+          </mat-form-field>
+        </div>
+        <div class="col-8">
+          <mat-form-field class="example-full-width fullWidthForm">
+            <mat-label>Tempo de Entrega do Restaurante</mat-label>
+            <input matInput placeholder="Tempo de Entrega do Restaurante" type="text" formControlName="tempoEntrega">
+          </mat-form-field>
+        </div>
+        <div class="col-8">
+          <mat-form-field class="example-full-width fullWidthForm">
+            <mat-label>Valor de Entrega do Restaurante</mat-label>
+            <input matInput placeholder="Valor de Entrega do Restaurante" type="text" formControlName="valorEntrega">
+          </mat-form-field>
+        </div>
+        <div class="col-8">
+          <mat-form-field class="example-full-width fullWidthForm">
+            <mat-label>Imagem do Restaurante</mat-label>
+            <input matInput placeholder="Imagem do Restaurante" type="text" formControlName="imagem">
+          </mat-form-field>
+        </div>
+        <div class="col-8">
+          <button mat-raised-button class="fullWidthForm" color="accent" (click)="atualizarRestaurante()">Alterar Dados</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row sectionItem" *ngIf="listaProdutos.length > 0">
+    <div class="col-12">
+      <h1>Produtos:</h1>
+    </div>
+    <div class="card col-4 ms-5 mt-5" style="width: 18rem;" *ngFor="let produto of listaProdutos">
+      <img class="card-img-top" [src]="produto.IMAGEM" alt="Imagem do produto {{produto.NOME}}">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="card-title">{{ produto.NOME }}</h5>
+            <p class="card-text">{{ produto.DESCRICAO }}</p>
+          </div>
+          <div class="col-12">
+            <p class="colorPink alignRight">{{ produto.VALOR|currency:'BRL' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button mat-raised-button color="primary" (click)="myUtils.returnToLastPage()">Voltar</button>
+
+</div>

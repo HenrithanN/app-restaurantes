@@ -8,14 +8,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PrincipalComponent } from './containers/principal/principal.component';
+import { CommonService } from './services/common.service';
+import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './components/modal/modal.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ModalEmailComponent } from './components/modal-email/modal-email.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { RestauranteDetalhesComponent } from './containers/restaurante-detalhes/restaurante-detalhes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    ModalComponent,
+    NavbarComponent,
+    ModalEmailComponent,
+    LoaderComponent,
+    RestauranteDetalhesComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,9 +36,11 @@ import { PrincipalComponent } from './containers/principal/principal.component';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [CommonService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

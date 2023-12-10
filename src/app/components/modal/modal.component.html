@@ -1,0 +1,8 @@
+<div class="modalCustom" *ngIf="myModal.showModal">
+  <div class="boxModal">
+    <p [innerHTML]="myModal.modalContent"></p>
+    <button class="close" (click)="myModal.closeModal()">
+      <img src="../../../assets/imgs/closeButton.png" style="width: 25px;" alt="Botão fechar modal" title="Botão fechar modal">
+    </button>
+  </div>
+</div>

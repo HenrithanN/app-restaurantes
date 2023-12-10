@@ -1,8 +1,24 @@
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="..." alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<div class="container">
+  <div class="row">
+    <div class="card col-4 ms-5 mt-5" style="width: 18rem;" *ngFor="let restaurante of listaRestaurantes">
+      <img class="card-img-top" [src]="restaurante.IMAGEM" alt="Imagem do Restaurante {{restaurante.NOME}}">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <h5 class="card-title">{{ restaurante.NOME }}</h5>
+            <p class="card-text">{{ restaurante.DESCRICAO }}</p>
+          </div>
+          <div class="col-12 mt-2">
+            <a class="btn btn-info fullWidthForm" (click)="verDetalhesRestaurante(restaurante)">Ver Produtos!</a>
+          </div>
+          <div class="col-12 mt-1">
+            <a class="btn btn-primary fullWidthForm" (click)="verDetalhesRestaurante(restaurante)">Editar Dados Restaurante!</a>
+          </div>
+          <div class="col-12 mt-1">
+            <a class="btn btn-secondary fullWidthForm" (click)="verDetalhesRestaurante(restaurante)">Saiba Mais!</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

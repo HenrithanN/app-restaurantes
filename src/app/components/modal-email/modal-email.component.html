@@ -1,0 +1,26 @@
+<div class="modalCustom" *ngIf="myModal.showModalEmail">
+  <div class="boxModal">
+    <form [formGroup]="formAlterarSenha" (keyup)="verificaSeSenhasSaoIguais(formAlterarSenha.value.senha, formAlterarSenha.value.confirmaSenha)">
+      <p [innerHTML]="myModal.modalEmailContent"></p>
+      <mat-form-field class="example-full-width fullWidthForm">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="Senha" type="email" formControlName="email">
+      </mat-form-field>
+      <mat-form-field class="example-full-width fullWidthForm">
+        <mat-label>Digite a Senha</mat-label>
+        <input matInput placeholder="Senha" type="password" formControlName="senha">
+      </mat-form-field>
+      <mat-form-field class="example-full-width fullWidthForm">
+        <mat-label>Confirme a Senha</mat-label>
+        <input matInput placeholder="Senha" type="password" formControlName="confirmaSenha">
+      </mat-form-field>
+      <p class="text-danger" *ngIf="erroSenhasDiferentes">As duas senhas devem ser iguais!</p>
+      <p class="text-danger" *ngIf="tentouEnviarFormInvalido">Existem campos inválidos!</p>
+      <button mat-raised-button class="fullWidthForm" color="accent" (click)="alterarSenha()">Alterar Senha</button>
+
+    </form>
+    <button class="close" (click)="myModal.closeModalEmail()">
+      <img src="../../../assets/imgs/closeButton.png" style="width: 25px;" alt="Botão fechar modal" title="Botão fechar modal">
+    </button>
+  </div>
+</div>
