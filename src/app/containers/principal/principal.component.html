@@ -1,21 +1,36 @@
 <div class="container">
   <div class="row">
-    <div class="card col-4 ms-5 mt-5" style="width: 18rem;" *ngFor="let restaurante of listaRestaurantes">
-      <img class="card-img-top" [src]="restaurante.IMAGEM" alt="Imagem do Restaurante {{restaurante.NOME}}">
+    <div class="col-12 ms-5 mt-5">
+      <mat-form-field class="fullWidthForm">
+        <mat-label>Filtro</mat-label>
+        <input matInput placeholder="Filtro" type="email" formControlName="email" (keyup)="filtrarRestaurantes($event)">
+        <p class="text-danger" *ngIf="listaRestaurantesFiltrados.length == 0">Não foram encontrados restaurantes com o filtro informado.</p>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card cardStyle col-4 ms-5 mt-5" *ngFor="let restaurante of listaRestaurantesFiltrados" (click)="verDetalhesRestaurante(restaurante)">
+      <img class="card-img-top cardImg" [src]="restaurante.IMAGEM" alt="Imagem do Restaurante {{restaurante.NOME}}">
       <div class="card-body">
         <div class="row">
           <div class="col-12">
             <h5 class="card-title">{{ restaurante.NOME }}</h5>
-            <p class="card-text">{{ restaurante.DESCRICAO }}</p>
+            <p class="cardDescription">{{ restaurante.DESCRICAO }}</p>
+          </div>
+          <div class="col-12">
+            <div class="row">
+              <div class="col-6">
+                <img style="width:1rem" src="../../../assets/imgs/relogioIcon.png" alt="Icone Relógio">
+                {{ restaurante.TEMPOENTREGA }}
+              </div>
+              <div class="col-6">
+                <img style="width:2rem" src="../../../assets/imgs/dinheiroIcon.png" alt="Icone Dinheiro">
+                {{ restaurante.VALORENTREGA|currency:'BRL' }}
+              </div>
+            </div>
           </div>
           <div class="col-12 mt-2">
-            <a class="btn btn-info fullWidthForm" (click)="verDetalhesRestaurante(restaurante)">Ver Produtos!</a>
-          </div>
-          <div class="col-12 mt-1">
-            <a class="btn btn-primary fullWidthForm" (click)="verDetalhesRestaurante(restaurante)">Editar Dados Restaurante!</a>
-          </div>
-          <div class="col-12 mt-1">
-            <a class="btn btn-secondary fullWidthForm" (click)="verDetalhesRestaurante(restaurante)">Saiba Mais!</a>
+            <button mat-raised-button color="primary" (click)="verDetalhesRestaurante(restaurante)">Ver Produtos!</button>
           </div>
         </div>
       </div>

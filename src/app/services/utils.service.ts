@@ -7,14 +7,16 @@ import { StorageService as storage }  from 'src/app/services/storage.service';
 })
 export class UtilsService {
 
-  readonly tipos_pontuacoes_remover: string[] = ['.', ',', '-', '/'];
   readonly erroGenerico: string = 'Ocorreu um erro inesperado!';
 
+  nomeUsuarioLogado: string = '';
   constructor(private location: Location){}
 
   RetornaUsuarioLogado(){
     const flagUsuarioLogado = storage.get('UsuarioLogado');
     if(flagUsuarioLogado){
+      const dadosUsuarioLogado = storage.get('DadoUsuarioLogado');
+      this.nomeUsuarioLogado = dadosUsuarioLogado.Nome;
       return true;
     }
     return false;

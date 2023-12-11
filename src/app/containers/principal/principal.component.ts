@@ -16,6 +16,7 @@ export class PrincipalComponent implements OnInit {
   constructor(private myCommon: CommonService, private myUtils: UtilsService, private myModal: ModalService, private router: Router) { }
 
   listaRestaurantes: Restaurante[] = [];
+  listaRestaurantesFiltrados: Restaurante[] = [];
   ngOnInit(): void {
     this.listarRestaurantes();
   }
@@ -31,11 +32,21 @@ export class PrincipalComponent implements OnInit {
       this.myModal.showModalMessage();
     }else{
       this.listaRestaurantes = dadosListaRestaurantes$;
+      this.listaRestaurantesFiltrados = dadosListaRestaurantes$;
     }
   }
 
   verDetalhesRestaurante(restaurante: any){
     storage.save('restauranteSelecionado', restaurante);
     this.router.navigate(['/restaurante-detalhes'])
+  }
+
+  filtrarRestaurantes(event: any){
+    const valorFiltro = event.currentTarget.value;
+
+    const restaurantesFiltrados = this.listaRestaurantes.filter((restaurante) =>
+    restaurante.DESCRICAO.toUpperCase().includes(valorFiltro.toUpperCase()) || restaurante.NOME.toUpperCase().includes(valorFiltro.toUpperCase()));
+
+    this.listaRestaurantesFiltrados = restaurantesFiltrados;
   }
 }

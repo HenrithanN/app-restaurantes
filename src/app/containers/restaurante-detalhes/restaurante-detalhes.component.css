@@ -26,3 +26,24 @@
 .alignRight{
   right:0
 }
+.cardStyle{
+  width: 18rem;
+  padding: 0;
+}
+.cardStyleCadastro{
+  width: 18rem;
+  padding: 0;
+}
+
+.cardStyle:hover{
+  transform: scale(1.1);
+  cursor: pointer !important;
+}
+.cardImg{
+  height: 200px;
+}
+
+.cardDescription{
+  font: 1em sans-serif;
+  color: rgba(29, 28, 28, 0.527);
+}

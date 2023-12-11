@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       email: this.formLogin.value.email,
       senha: this.formLogin.value.senha
     }
-    console.log('in', in_body)
+
     const dadosEfetuarLogin$ = await this.myCommon.EfetuarLogin(in_body).toPromise()
     .then((dadosEfetuarLogin) => dadosEfetuarLogin)
     .catch((errorEfetuarLogin) => errorEfetuarLogin)
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
     }else{
       storage.save('UsuarioLogado', 'true');
       const dadosUsuarioLogado = {
-        Nome: dadosUsuarioLogado$.NOME
+        Nome: dadosUsuarioLogado$[0].NOME
       }
       storage.save('DadoUsuarioLogado', dadosUsuarioLogado)
       this.router.navigate(['/principal']);

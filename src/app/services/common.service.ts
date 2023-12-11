@@ -43,4 +43,9 @@ export class CommonService {
     this.myModal.loader = true;
     return this.http.get(`${this.API_URL}/produto/listarProdutoPorIdRestaurante/${idRestaurante}`);
   }
+
+  AdicionarProduto(inBody: any){
+    this.myModal.loader = true;
+    return this.http.post(`${this.API_URL}/produto/salvar`, inBody);
+  }
 }

@@ -48,23 +48,47 @@
       </form>
     </div>
   </div>
-  <div class="row sectionItem" *ngIf="listaProdutos.length > 0">
+  <div class="row sectionItem">
     <div class="col-12">
       <h1>Produtos:</h1>
     </div>
-    <div class="card col-4 ms-5 mt-5" style="width: 18rem;" *ngFor="let produto of listaProdutos">
-      <img class="card-img-top" [src]="produto.IMAGEM" alt="Imagem do produto {{produto.NOME}}">
+    <div class="card cardStyle col-4 ms-5 mt-5" *ngFor="let produto of listaProdutos">
+      <img class="card-img-top cardImg" [src]="produto.IMAGEM" alt="Imagem do produto {{produto.NOME}}">
       <div class="card-body">
         <div class="row">
           <div class="col-12">
             <h5 class="card-title">{{ produto.NOME }}</h5>
-            <p class="card-text">{{ produto.DESCRICAO }}</p>
+            <p class="cardDescription">{{ produto.DESCRICAO }}</p>
           </div>
           <div class="col-12">
             <p class="colorPink alignRight">{{ produto.VALOR|currency:'BRL' }}</p>
           </div>
         </div>
       </div>
+    </div>
+    <div id="cardProduto" class="card cardStyle col-4 ms-5 mt-5" style="width: 18rem;" (click)="showAdicionarProduto()">
+      <img *ngIf="!flgAdicionarProduto" class="card-img-top" src="../../../assets/imgs/botaoMais.jpg" alt="Imagem do botão mais">
+      <form class="col-12" [formGroup]="formAdicionarProduto" *ngIf="flgAdicionarProduto">
+        <mat-form-field class="example-full-width fullWidthForm">
+          <mat-label>Nome do Produto</mat-label>
+          <input matInput placeholder="Nome do Produto" type="text" formControlName="nome">
+        </mat-form-field>
+        <mat-form-field class="example-full-width fullWidthForm">
+          <mat-label>Descrição do Produto</mat-label>
+          <input matInput placeholder="Descrição do Produto" type="text" formControlName="descricao">
+        </mat-form-field>
+        <mat-form-field class="example-full-width fullWidthForm">
+          <mat-label>Valor do Produto</mat-label>
+          <input matInput placeholder="Valor do Produto" type="text" formControlName="valor">
+        </mat-form-field>
+        <mat-form-field class="example-full-width fullWidthForm">
+          <mat-label>URL da Imagem do Produto</mat-label>
+          <input matInput placeholder="URL da Imagem do Produto" type="text" formControlName="imagem">
+        </mat-form-field>
+        <div class="col-12">
+          <button mat-raised-button class="fullWidthForm" color="accent" (click)="adiconarProduto()">Adicionar produto</button>
+        </div>
+      </form>
     </div>
   </div>
   <button mat-raised-button color="primary" (click)="myUtils.returnToLastPage()">Voltar</button>
